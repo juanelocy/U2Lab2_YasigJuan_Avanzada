@@ -1,0 +1,37 @@
+<div style="max-width: 600px; margin: auto; font-family: Arial, sans-serif;">
+  <h2 style="text-align: center;">Gestión de Usuarios</h2>
+
+  <div style="margin-bottom: 1rem;">
+    <input [(ngModel)]="nuevoUsuario.cedula" placeholder="Cédula" style="width: 100%; margin-bottom: 0.5rem;">
+    <input [(ngModel)]="nuevoUsuario.nombre" placeholder="Nombre" style="width: 100%; margin-bottom: 0.5rem;">
+    <input [(ngModel)]="nuevoUsuario.correo" placeholder="Correo" style="width: 100%; margin-bottom: 0.5rem;">
+
+    <div style="display: flex; justify-content: space-between;">
+      <button (click)="crear()" style="flex: 1; margin-right: 5px;">Crear</button>
+      <button (click)="actualizar()" style="flex: 1; margin-left: 5px;">Actualizar</button>
+    </div>
+  </div>
+
+  <p>Registros cargados: {{ usuarios.length }}</p>
+
+  
+  <table style="width: 100%; border-collapse: collapse; text-align: left;">
+    <thead>
+      <tr style="background-color: #f0f0f0;">
+        <th style="border: 1px solid #ccc; padding: 0.5rem;">Cédula</th>
+        <th style="border: 1px solid #ccc; padding: 0.5rem;">Nombre</th>
+        <th style="border: 1px solid #ccc; padding: 0.5rem;">Correo</th>
+        <th style="border: 1px solid #ccc; padding: 0.5rem;">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">{{ u.cedula }}</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">{{ u.nombre }}</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">{{ u.correo }}</td>
+        <td style="border: 1px solid #ccc; padding: 0.5rem;">
+          <button (click)="editar(u)">Editar</button>
+          <button (click)="eliminar(u.cedula)" style="color: red;">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
